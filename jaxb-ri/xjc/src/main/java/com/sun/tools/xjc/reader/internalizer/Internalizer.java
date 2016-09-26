@@ -395,7 +395,7 @@ class Internalizer {
                     move(item, targetNodes);
                 } else if ("globalBindings".equals(localName)) {
                         // <jaxb:globalBindings> always go to the root of document.
-                    Element root = forest.getOneDocument().getDocumentElement();
+                    Element root = forest.getOneRootDocument().getDocumentElement();
                     if (root.getNamespaceURI().equals(WSDL_NS)) {
                         NodeList elements = root.getElementsByTagNameNS(XMLConstants.W3C_XML_SCHEMA_NS_URI, "schema");
                         if ((elements == null) || (elements.getLength() < 1)) {

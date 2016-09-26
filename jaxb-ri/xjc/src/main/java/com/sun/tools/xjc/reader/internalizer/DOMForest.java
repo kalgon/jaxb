@@ -220,6 +220,18 @@ public final class DOMForest {
         // we should have caught this error very early on
         throw new AssertionError();
     }
+    
+    /**
+     * Picks one root document at random and returns it.
+     */
+    public Document getOneRootDocument() {
+    	for( String systemId : getRootDocuments() ) {
+            Document dom = get(systemId);
+            if (!dom.getDocumentElement().getNamespaceURI().equals(Const.JAXB_NSURI))
+                return dom;
+    	}
+    	throw new AssertionError();
+    }
 
     /**
      * Checks the correctness of the XML Schema documents and return true
